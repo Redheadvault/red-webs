@@ -1,69 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About — rh-redwebs</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — rh-redwebs</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body data-view="cutter">
-    <nav>
-        <a href="index.html" class="wordmark">rh_redwebs</a>
-        <div class="nav-right">
-            <div class="nav-menu">
-                <a href="cookies.html">Cookies</a>
-                <a href="about.html" class="active">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="views-dropdown">
-                <button class="views-btn" id="viewsBtn">Views</button>
-                <div class="views-menu" id="viewsMenu">
-                    <button data-view="cutter">Cutter</button>
-                    <button data-view="power">Power</button>
-                    <button data-view="vibrant">Vibrant</button>
-                    <button data-view="luxury">Luxury</button>
-                </div>
-            </div>
-        </div>
-    </nav>
+  <nav>
+    <a href="index.html" class="wordmark">rh_redwebs</a>
+    <div class="views-dropdown">
+      <button class="views-btn" id="viewsBtn">Views</button>
+      <div class="views-menu" id="viewsMenu">
+        <button data-view="cutter">Cutter</button>
+        <button data-view="power">Power</button>
+        <button data-view="vibrant">Vibrant</button>
+        <button data-view="luxury">Luxury</button>
+      </div>
+    </div>
+  </nav>
 
-    <main class="page-content">
-        <div class="page-header">
-            <h1>About</h1>
-            <p class="subtitle">Custom sites, no templates</p>
-        </div>
+  <main id="mainContent">
+    <div class="creative-hero">
+      <h1>About This Project</h1>
+      <p>
+        This site is an evolving field experiment — a playground for web aesthetics and cognitive architecture.
+        Each view represents a different mode of perception, re-rendered live.
+      </p>
+      <a href="index.html" class="cta-btn">Back Home</a>
+    </div>
+  </main>
 
-        <div class="about-content">
-            <section class="about-section">
-                <h2>What I do</h2>
-                <p>I build custom websites that actually represent you. No cookie-cutter templates, no generic designs that look like everyone else's. Each site is built from scratch to match your vibe and speak to your audience.</p>
-            </section>
+  <script>
+    const body = document.body;
+    const viewsBtn = document.getElementById('viewsBtn');
+    const viewButtons = document.querySelectorAll('.views-menu button');
+    const mainContent = document.getElementById('mainContent');
 
-            <section class="about-section">
-                <h2>How it works</h2>
-                <p>We talk about what you need, who you're trying to reach, and what feeling you want your site to have. Then I build it. Simple as that. You get updates along the way, and we don't stop until it's right.</p>
-            </section>
+    setView('cutter', false);
 
-            <section class="about-section">
-                <h2>What you get</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3>Custom Design</h3>
-                        <p>Built specifically for you, not pulled from a template library</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Clean Code</h3>
-                        <p>Fast, responsive, and actually maintainable</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Your Vibe</h3>
-                        <p>Whether you're bold, minimal, or somewhere in between</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
+    viewsBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      document.querySelector('.views-dropdown').classList.toggle('active');
+    });
 
-    <script src="theme-switcher.js"></script>
+    document.addEventListener('click', function(e) {
+      const dropdown = document.querySelector('.views-dropdown');
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('active');
+      }
+    });
+
+    viewButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const view = this.getAttribute('data-view');
+        setView(view, true);
+        document.querySelector('.views-dropdown').classList.remove('active');
+      });
+    });
+
+    function setView(view, animate) {
+      body.setAttribute('data-view', view);
+      if (animate) {
+        mainContent.style.opacity = '0';
+        setTimeout(() => {
+          mainContent.style.opacity = '1';
+        }, 200);
+      }
+    }
+  </script>
 </body>
 </html>
