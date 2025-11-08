@@ -1,122 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>rh-redwebs — All Views</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rh-redwebs</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body data-view="cutter">
-  <nav>
-    <a href="index.html" class="wordmark">rh_redwebs</a>
-    <div class="views-dropdown">
-      <button class="views-btn" id="viewsBtn">Views</button>
-      <div class="views-menu" id="viewsMenu">
-        <button data-view="cutter">Cutter</button>
-        <button data-view="power">Power</button>
-        <button data-view="vibrant">Vibrant</button>
-        <button data-view="luxury">Luxury</button>
-      </div>
-    </div>
-  </nav>
+    <nav>
+        <a href="index.html" class="wordmark">rh_redwebs</a>
+        <div class="nav-right">
+            <div class="nav-menu">
+                <a href="cookies.html">Cookies</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="views-dropdown">
+                <button class="views-btn" id="viewsBtn">Views</button>
+                <div class="views-menu" id="viewsMenu">
+                    <button data-view="cutter">Cutter</button>
+                    <button data-view="power">Power</button>
+                    <button data-view="vibrant">Vibrant</button>
+                    <button data-view="luxury">Luxury</button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-  <main id="mainContent"></main>
+    <main id="mainContent"></main>
 
-  <template id="cutter-template">
-    <div class="creative-hero">
-      <h1>Your website shouldn't feel like everyone else's</h1>
-      <p>Look, I get it. You've seen a thousand cookie-cutter websites that all blur together.<br>That's not what I do.</p>
-      <a href="#" class="cta-btn">Let's talk about your site</a>
-    </div>
-  </template>
+    <template id="cutter-template">
+        <div class="cutter-hero">
+            <h1>Your website shouldn't feel like everyone else's</h1>
+            <p>Look, I get it. You've seen a thousand cookie-cutter websites that all blur together.<br>That's not what I do.</p>
+            <a href="contact.html" class="cta-btn">Let's talk about your site</a>
+        </div>
+    </template>
 
-  <template id="power-template">
-    <div class="power-hero">
-      <div class="power-number">001 — EXECUTION</div>
-      <h1>You already know<br>what <span class="power-accent">needs</span> to happen</h1>
-      <p>Most people talk. You execute. Your site should do the same—direct, confident, no wasted movement.</p>
-      <a href="#" class="cta-btn">Work with me</a>
-    </div>
-  </template>
+    <template id="power-template">
+        <div class="power-hero">
+            <div class="power-number">001 — EXECUTION</div>
+            <h1>YOU ALREADY KNOW<br>WHAT <span class="power-accent">NEEDS</span><br>TO HAPPEN</h1>
+            <p>Most people talk. You execute. Your site should do the same—direct, confident, no wasted movement.</p>
+            <a href="contact.html" class="cta-btn">Work with me</a>
+        </div>
+    </template>
 
-  <template id="vibrant-template">
-    <div class="vibrant-hero">
-      <h1><span class="rainbow-text">Your</span> website <span class="rainbow-text">should</span> POP!</h1>
-      <div class="color-blocks">
-        <div class="block pink"></div>
-        <div class="block purple"></div>
-        <div class="block gold"></div>
-      </div>
-      <p>Boring beige? Not here. I build sites that are bold, colorful, and unapologetically YOU.</p>
-      <a href="#" class="cta-btn">Let's create magic ✨</a>
-    </div>
-  </template>
+    <template id="vibrant-template">
+        <div class="vibrant-hero">
+            <div class="vibrant-accent">BOLD • CONFIDENT • UNAPOLOGETIC</div>
+            <h1>Your brand<br>deserves to be <strong>unforgettable</strong></h1>
+            <div class="color-accent">
+                <div class="color-dot"></div>
+                <div class="color-dot"></div>
+                <div class="color-dot"></div>
+                <div class="color-dot"></div>
+            </div>
+            <p>Why blend in when you were made to stand out? Let's build something that turns heads and stays in minds.</p>
+            <a href="contact.html" class="cta-btn">Let's create</a>
+        </div>
+    </template>
 
-  <template id="luxury-template">
-    <div class="luxury-hero">
-      <div class="luxury-mark">EST. 2026</div>
-      <h1>Crafted<br>for those who<br>demand more</h1>
-      <div class="luxury-divider"></div>
-      <p>Where precision meets elegance.<br>Where code becomes art.</p>
-      <a href="#" class="cta-btn">Begin Inquiry</a>
-    </div>
-  </template>
+    <template id="luxury-template">
+        <div class="luxury-hero">
+            <div class="luxury-mark">EST. 2026</div>
+            <h1>Crafted<br>for those who<br>demand more</h1>
+            <div class="luxury-divider"></div>
+            <p>Where precision meets elegance.<br>Where code becomes art.</p>
+            <a href="contact.html" class="cta-btn">Begin Inquiry</a>
+        </div>
+    </template>
 
-  <script>
-    const body = document.body;
-    const mainContent = document.getElementById('mainContent');
-    const viewsBtn = document.getElementById('viewsBtn');
-    const viewButtons = document.querySelectorAll('.views-menu button');
-
-    setView('cutter', false);
-
-    viewsBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      document.querySelector('.views-dropdown').classList.toggle('active');
-    });
-
-    document.addEventListener('click', function(e) {
-      const dropdown = document.querySelector('.views-dropdown');
-      if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove('active');
-      }
-    });
-
-    viewButtons.forEach(button => {
-      button.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const view = this.getAttribute('data-view');
-        setView(view, true);
-        document.querySelector('.views-dropdown').classList.remove('active');
-      });
-    });
-
-    function setView(view, animate) {
-      if (animate) {
-        mainContent.style.opacity = '0';
-        mainContent.style.transform = 'translateY(20px)';
-      }
-
-      setTimeout(() => {
-        body.setAttribute('data-view', view);
-        const template = document.getElementById(`${view}-template`);
-        const content = template.content.cloneNode(true);
-        mainContent.innerHTML = '';
-        mainContent.appendChild(content);
-
-        if (animate) {
-          setTimeout(() => {
-            mainContent.style.opacity = '1';
-            mainContent.style.transform = 'translateY(0)';
-          }, 50);
-        } else {
-          mainContent.style.opacity = '1';
-          mainContent.style.transform = 'translateY(0)';
-        }
-      }, animate ? 300 : 0);
-    }
-
-    mainContent.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-  </script>
+    <script src="theme-switcher.js"></script>
 </body>
 </html>
