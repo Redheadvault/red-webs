@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rh-redwebs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-view="cutter">
+    <nav>
+        <a href="index.html" class="wordmark">rh_redwebs</a>
+        <div class="nav-right">
+            <div class="nav-menu">
+                <a href="cookies.html">Cookies</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="views-dropdown">
+                <button class="views-btn" id="viewsBtn">Views</button>
+                <div class="views-menu" id="viewsMenu">
+                    <button data-view="cutter">Cutter</button>
+                    <button data-view="power">Power</button>
+                    <button data-view="vibrant">Vibrant</button>
+                    <button data-view="luxury">Luxury</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="mainContent"></main>
+
+    <template id="cutter-template">
+        <div class="cutter-hero">
+            <h1>Your website shouldn't feel like everyone else's</h1>
+            <p>Look, I get it. You've seen a thousand cookie-cutter websites that all blur together.<br>That's not what I do.</p>
+            <a href="contact.html" class="cta-btn">Let's talk about your site</a>
+        </div>
+    </template>
+
+    <template id="power-template">
+        <div class="power-hero">
+            <div class="power-number">001 — EXECUTION</div>
+            <h1>YOU ALREADY KNOW<br>WHAT <span class="power-accent">NEEDS</span><br>TO HAPPEN</h1>
+            <p>Most people talk. You execute. Your site should do the same—direct, confident, no wasted movement.</p>
+            <a href="contact.html" class="cta-btn">Work with me</a>
+        </div>
+    </template>
+
+    <template id="vibrant-template">
+        <div class="vibrant-hero">
+            <div class="vibrant-accent">BOLD • CONFIDENT • UNAPOLOGETIC</div>
+            <h1>Your brand<br>deserves to be <strong>unforgettable</strong></h1>
+            <div class="color-accent">
+                <div class="color-dot"></div>
+                <div class="color-dot"></div>
+                <div class="color-dot"></div>
+                <div class="color-dot"></div>
+            </div>
+            <p>Why blend in when you were made to stand out? Let's build something that turns heads and stays in minds.</p>
+            <a href="contact.html" class="cta-btn">Let's create</a>
+        </div>
+    </template>
+
+    <template id="luxury-template">
+        <div class="luxury-hero">
+            <div class="luxury-mark">EST. 2026</div>
+            <h1>Crafted<br>for those who<br>demand more</h1>
+            <div class="luxury-divider"></div>
+            <p>Where precision meets elegance.<br>Where code becomes art.</p>
+            <a href="contact.html" class="cta-btn">Begin Inquiry</a>
+        </div>
+    </template>
+
+    <script src="theme-switcher.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Kalam:wght@300;400&family=Oswald:wght@600;700&family=Poppins:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { color-scheme: light dark; }
+        body { min-height: 100vh; overflow-x: hidden; transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 2rem 3rem; z-index: 1000; transition: all 0.4s ease; }
+        body[data-view="creative"] nav { background: rgba(245, 241, 232, 0.95); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        body[data-view="power"] nav { background: rgba(26, 0, 0, 0.95); border-bottom: 2px solid rgba(255, 51, 51, 0.3); }
+        body[data-view="vibrant"] nav { background: rgba(13, 10, 26, 0.95); border-bottom: 1px solid rgba(168, 85, 247, 0.3); }
+        body[data-view="luxury"] nav { background: rgba(10, 10, 10, 0.98); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+
+        .wordmark { font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+        body[data-view="creative"] .wordmark { color: #3d3d3d; font-family: -apple-system, sans-serif; }
+        body[data-view="power"] .wordmark { color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; letter-spacing: 0.1em; font-weight: 800; text-transform: uppercase; }
+        body[data-view="vibrant"] .wordmark { color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 600; letter-spacing: 0.05em; }
+        body[data-view="luxury"] .wordmark { color: #d4af37; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; }
+
+        .views-btn { background: none; border: none; cursor: pointer; font-size: 1rem; padding: 0.5rem 1rem; transition: all 0.3s ease; }
+        body[data-view="creative"] .views-btn { color: #7a7a7a; font-family: -apple-system, sans-serif; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 20px; }
+        body[data-view="power"] .views-btn { color: #000; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: linear-gradient(135deg, #ff3333, #cc0000); border-radius: 4px; font-weight: 800; text-transform: uppercase; }
+        body[data-view="vibrant"] .views-btn { color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 600; background: linear-gradient(135deg, #ec4899, #a855f7, #fbbf24); border-radius: 20px; box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); background-size: 200% 100%; }
+        body[data-view="luxury"] .views-btn { color: #d4af37; font-family: 'Cormorant Garamond', serif; border: 1px solid #d4af37; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.85rem; }
+
+        .views-dropdown { position: relative; }
+        .views-menu { position: absolute; top: calc(100% + 1rem); right: 0; min-width: 150px; border-radius: 8px; padding: 0.5rem; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); }
+        body[data-view="creative"] .views-menu { background: #f5f1e8; border: 1px solid rgba(0, 0, 0, 0.1); }
+        body[data-view="power"] .views-menu { background: #1a0000; border: 2px solid rgba(255, 51, 51, 0.3); }
+        body[data-view="vibrant"] .views-menu { background: #1a0f2e; border: 1px solid rgba(219, 39, 119, 0.3); }
+        body[data-view="luxury"] .views-menu { background: #1a1a1a; border: 1px solid #d4af37; }
+
+        .views-dropdown:hover .views-menu, .views-dropdown.active .views-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+        .views-menu button { display: block; width: 100%; padding: 0.75rem 1rem; text-align: left; background: none; border: none; cursor: pointer; border-radius: 4px; transition: all 0.2s ease; font-size: 0.95rem; }
+        body[data-view="creative"] .views-menu button { color: #5a5a5a; font-family: -apple-system, sans-serif; }
+        body[data-view="creative"] .views-menu button:hover { background: rgba(0, 0, 0, 0.05); }
+        body[data-view="power"] .views-menu button { color: #aaa; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 500; }
+        body[data-view="power"] .views-menu button:hover { background: rgba(255, 51, 51, 0.2); color: #ff6666; }
+        body[data-view="vibrant"] .views-menu button { color: #d1c4e9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 500; }
+        body[data-view="vibrant"] .views-menu button:hover { background: linear-gradient(90deg, rgba(236, 72, 153, 0.1), rgba(168, 85, 247, 0.1)); color: #ec4899; }
+        body[data-view="luxury"] .views-menu button { color: #999; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.8rem; }
+        body[data-view="luxury"] .views-menu button:hover { background: #d4af37; color: #0a0a0a; }
+
+        main { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 3rem; transition: all 0.6s ease; }
+
+        /* CREATIVE */
+        body[data-view="creative"] { background: #f5f1e8 !important; color: #3d3d3d !important; }
+        .creative-hero { max-width: 680px; animation: fadeInUp 0.8s ease; }
+        .creative-hero h1 { font-family: 'Courier Prime', monospace; font-size: clamp(2.8rem, 7vw, 4.2rem); font-weight: 700; line-height: 1.15; margin-bottom: 2rem; color: #3d3d3d !important; }
+        .creative-hero p { font-family: 'Kalam', cursive; font-size: 1.25rem; color: #5a5a5a !important; line-height: 1.75; margin-bottom: 3rem; font-weight: 300; }
+        body[data-view="creative"] .cta-btn { font-family: 'Kalam', cursive; display: inline-block; padding: 1rem 2rem; color: #3d3d3d !important; text-decoration: none; border: 2px solid #3d3d3d; border-radius: 50px; font-size: 1.1rem; transition: all 0.3s ease; }
+        body[data-view="creative"] .cta-btn:hover { background: #3d3d3d; color: #f5f1e8 !important; transform: translateY(-2px); }
+
+        /* POWER */
+        body[data-view="power"] { background: linear-gradient(135deg, #1a0000 0%, #330000 50%, #1a0000 100%); color: #fff; position: relative; overflow: hidden; }
+        body[data-view="power"]::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 50, 50, 0.03) 2px, rgba(255, 50, 50, 0.03) 4px); animation: scanlines 8s linear infinite; }
+        @keyframes scanlines { 0% { transform: translateY(0); } 100% { transform: translateY(50px); } }
+        body[data-view="power"]::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); opacity: 0.05; pointer-events: none; }
+        .power-hero { max-width: 850px; text-align: left; animation: powerSlam 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative; z-index: 1; }
+        .power-number { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.9rem; color: #ff3333; margin-bottom: 2.5rem; letter-spacing: 0.3em; text-transform: uppercase; font-weight: 700; text-shadow: 0 0 20px rgba(255, 51, 51, 0.5); }
+        .power-hero h1 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 900; line-height: 0.95; margin-bottom: 2.5rem; color: #ffffff; letter-spacing: -0.03em; text-transform: uppercase; text-shadow: 3px 3px 0 #ff3333, 6px 6px 20px rgba(0, 0, 0, 0.8); }
+        .power-accent { color: #ff6666; font-weight: 900; }
+        .power-hero p { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1.3rem; color: #cccccc; line-height: 1.6; margin-bottom: 3rem; font-weight: 500; max-width: 650px; }
+        body[data-view="power"] .cta-btn { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; display: inline-block; padding: 1.3rem 3rem; color: #000; text-decoration: none; background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%); border: none; font-size: 1.1rem; font-weight: 800; transition: all 0.2s ease; letter-spacing: 0.05em; text-transform: uppercase; box-shadow: 0 8px 25px rgba(255, 51, 51, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3); transform: skewX(-2deg); }
+        body[data-view="power"] .cta-btn:hover { background: linear-gradient(135deg, #ff6666 0%, #ff3333 100%); transform: skewX(-2deg) scale(1.05); box-shadow: 0 12px 35px rgba(255, 51, 51, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
+        @keyframes powerSlam { from { opacity: 0; transform: scale(0.9) translateY(30px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+
+        /* VIBRANT */
+        body[data-view="vibrant"] { background: linear-gradient(135deg, #1a0520 0%, #0d1b2a 30%, #1b0a28 60%, #2d1320 100%); background-size: 200% 200%; animation: colorFlow 20s ease infinite; color: #fff; position: relative; overflow: hidden; }
+        @keyframes colorFlow { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        body[data-view="vibrant"]::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 20% 30%, rgba(236, 72, 153, 0.2) 0%, transparent 30%), radial-gradient(circle at 80% 40%, rgba(168, 85, 247, 0.2) 0%, transparent 30%), radial-gradient(circle at 50% 70%, rgba(251, 191, 36, 0.15) 0%, transparent 30%), radial-gradient(circle at 70% 80%, rgba(14, 165, 233, 0.15) 0%, transparent 30%); animation: orbFloat 25s ease infinite; }
+        @keyframes orbFloat { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(40px, -40px) rotate(180deg); } }
+        body[data-view="vibrant"]::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); opacity: 0.04; pointer-events: none; }
+        .vibrant-hero { max-width: 750px; text-align: center; animation: vibrantFadeIn 1s ease; position: relative; z-index: 1; }
+        .vibrant-accent { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.85rem; background: linear-gradient(90deg, #ec4899, #a855f7, #fbbf24, #0ea5e9); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 2rem; letter-spacing: 0.4em; text-transform: uppercase; font-weight: 600; }
+        .vibrant-hero h1 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem; color: #fff; letter-spacing: -0.02em; font-style: italic; }
+        .vibrant-hero h1 strong { font-weight: 700; background: linear-gradient(135deg, #ec4899 0%, #a855f7 33%, #fbbf24 66%, #0ea5e9 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: normal; }
+        .color-accent { display: flex; justify-content: center; gap: 0.5rem; margin: 2rem auto; }
+        .color-dot { width: 8px; height: 8px; border-radius: 50%; }
+        .color-dot:nth-child(1) { background: #ec4899; box-shadow: 0 0 15px rgba(236, 72, 153, 0.6); }
+        .color-dot:nth-child(2) { background: #a855f7; box-shadow: 0 0 15px rgba(168, 85, 247, 0.6); }
+        .color-dot:nth-child(3) { background: #fbbf24; box-shadow: 0 0 15px rgba(251, 191, 36, 0.6); }
+        .color-dot:nth-child(4) { background: #0ea5e9; box-shadow: 0 0 15px rgba(14, 165, 233, 0.6); }
+        .vibrant-hero p { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1.15rem; color: #d1c4e9; line-height: 1.8; margin-bottom: 3rem; font-weight: 400; max-width: 600px; margin-left: auto; margin-right: auto; letter-spacing: 0.02em; }
+        body[data-view="vibrant"] .cta-btn { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; display: inline-block; padding: 1.2rem 3rem; color: #fff; text-decoration: none; background: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #fbbf24 100%); border: none; font-size: 1rem; font-weight: 600; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.05em; box-shadow: 0 10px 40px rgba(168, 85, 247, 0.4); border-radius: 50px; background-size: 200% 100%; }
+        body[data-view="vibrant"] .cta-btn:hover { background-position: 100% 0; transform: translateY(-3px); box-shadow: 0 15px 50px rgba(236, 72, 153, 0.5); }
+        @keyframes vibrantFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* LUXURY */
+        body[data-view="luxury"] { background: #0a0a0a !important; color: #d4af37 !important; position: relative; }
+        body[data-view="luxury"]::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 70%); pointer-events: none; }
+        .luxury-hero { max-width: 600px; animation: luxuryFadeIn 1.5s ease; text-align: center; position: relative; z-index: 1; }
+        .luxury-mark { font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.8em; margin-bottom: 6rem; color: #d4af37; opacity: 0.4; text-transform: uppercase; }
+        .luxury-divider { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, #d4af37, transparent); margin: 3rem auto; opacity: 0.3; }
+        .luxury-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 300; line-height: 1.25; margin-bottom: 3rem; color: #ffffff; letter-spacing: 0.08em; font-style: italic; }
+        .luxury-hero p { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #888; line-height: 2; margin-bottom: 6rem; font-weight: 300; letter-spacing: 0.1em; max-width: 450px; margin-left: auto; margin-right: auto; }
+        body[data-view="luxury"] .cta-btn { font-family: 'Cormorant Garamond', serif; display: inline-block; padding: 1.4rem 4rem; color: #d4af37 !important; text-decoration: none; background: transparent; border: 1px solid rgba(212, 175, 55, 0.4); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
+        body[data-view="luxury"] .cta-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: #d4af37; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); z-index: -1; }
+        body[data-view="luxury"] .cta-btn:hover { color: #0a0a0a !important; border-color: #d4af37; letter-spacing: 0.4em; }
+        body[data-view="luxury"] .cta-btn:hover::before { left: 0; }
+
+        /* Animations */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes luxuryFadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            nav { padding: 1.5rem 2rem; }
+            main { padding: 2rem; }
+        }
