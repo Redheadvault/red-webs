@@ -54,11 +54,10 @@ body[data-view="vibrant"] .views-menu button:hover { background: linear-gradient
 body[data-view="luxury"] .views-menu button { color: #999; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.8rem; }
 body[data-view="luxury"] .views-menu button:hover { background: #d4af37; color: #0a0a0a; }
 
-main { min-height: 100vh; padding: 3rem; transition: all 0.6s ease; }
-main:not(.page-content) { display: flex; align-items: center; justify-content: center; }
+main { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 3rem; transition: all 0.6s ease; }
 
 /* Page Content */
-.page-content { max-width: 1000px; margin: 0 auto; padding-top: 8rem; }
+.page-content { max-width: 1000px; margin: 0 auto; }
 .page-header { margin-bottom: 4rem; }
 .page-header h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1rem; }
 body[data-view="cutter"] .page-header h1 { font-family: 'Courier Prime', monospace; color: #3d3d3d; }
@@ -160,7 +159,7 @@ body[data-view="vibrant"] .about-section p { font-family: -apple-system, sans-se
 body[data-view="luxury"] .about-section p { font-family: 'Cormorant Garamond', serif; color: #888; }
 
 /* About Simple */
-.about-simple { text-align: center; max-width: 650px; }
+.about-simple { text-align: center; max-width: 650px; margin: 0 auto; }
 .about-simple h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 2rem; }
 body[data-view="cutter"] .about-simple h1 { font-family: 'Courier Prime', monospace; color: #3d3d3d; }
 body[data-view="power"] .about-simple h1 { font-family: -apple-system, sans-serif; color: #fff; font-weight: 900; text-transform: uppercase; }
