@@ -57,7 +57,7 @@ body[data-view="luxury"] .views-menu button:hover { background: #d4af37; color: 
 main { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 3rem; transition: all 0.6s ease; }
 
 /* Page Content */
-.page-content { max-width: 1000px; margin: 0 auto; }
+.page-content { max-width: 1000px; margin: 0 auto; padding-top: 8rem; }
 .page-header { margin-bottom: 4rem; }
 .page-header h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1rem; }
 body[data-view="cutter"] .page-header h1 { font-family: 'Courier Prime', monospace; color: #3d3d3d; }
@@ -157,19 +157,6 @@ body[data-view="cutter"] .about-section p { font-family: 'Kalam', cursive; color
 body[data-view="power"] .about-section p { font-family: -apple-system, sans-serif; color: #ccc; }
 body[data-view="vibrant"] .about-section p { font-family: -apple-system, sans-serif; color: #d1c4e9; }
 body[data-view="luxury"] .about-section p { font-family: 'Cormorant Garamond', serif; color: #888; }
-
-/* About Simple */
-.about-simple { text-align: center; max-width: 650px; margin: 0 auto; }
-.about-simple h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 2rem; }
-body[data-view="cutter"] .about-simple h1 { font-family: 'Courier Prime', monospace; color: #3d3d3d; }
-body[data-view="power"] .about-simple h1 { font-family: -apple-system, sans-serif; color: #fff; font-weight: 900; text-transform: uppercase; }
-body[data-view="vibrant"] .about-simple h1 { font-family: -apple-system, sans-serif; color: #fff; font-weight: 600; }
-body[data-view="luxury"] .about-simple h1 { font-family: 'Cormorant Garamond', serif; color: #d4af37; font-weight: 400; }
-.about-simple p { font-size: 1.25rem; line-height: 1.8; margin-bottom: 1.5rem; }
-body[data-view="cutter"] .about-simple p { font-family: 'Kalam', cursive; color: #5a5a5a; }
-body[data-view="power"] .about-simple p { font-family: -apple-system, sans-serif; color: #ccc; }
-body[data-view="vibrant"] .about-simple p { font-family: -apple-system, sans-serif; color: #d1c4e9; }
-body[data-view="luxury"] .about-simple p { font-family: 'Cormorant Garamond', serif; color: #888; letter-spacing: 0.05em; }
 
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
 .service-card { padding: 2rem; border-radius: 8px; }
