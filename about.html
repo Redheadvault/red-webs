@@ -5,6 +5,196 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About — rh-redwebs</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-hero {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body[data-view="cutter"] .code-block {
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #3d3d3d;
+        }
+
+        body[data-view="power"] .code-block {
+            background: rgba(255, 51, 51, 0.05);
+            border: 1px solid rgba(255, 51, 51, 0.3);
+            color: #ff6666;
+        }
+
+        body[data-view="vibrant"] .code-block {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(168, 85, 247, 0.05));
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            color: #ec4899;
+        }
+
+        body[data-view="luxury"] .code-block {
+            background: rgba(212, 175, 55, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+        }
+
+        .code-line {
+            opacity: 0;
+            animation: typeIn 0.3s forwards;
+        }
+
+        .code-line:nth-child(1) { animation-delay: 0.1s; }
+        .code-line:nth-child(2) { animation-delay: 0.3s; }
+        .code-line:nth-child(3) { animation-delay: 0.5s; }
+        .code-line:nth-child(4) { animation-delay: 0.7s; }
+        .code-line:nth-child(5) { animation-delay: 0.9s; }
+
+        @keyframes typeIn {
+            to { opacity: 1; }
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .skill-item {
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        body[data-view="cutter"] .skill-item {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px dashed rgba(0, 0, 0, 0.1);
+        }
+
+        body[data-view="power"] .skill-item {
+            background: rgba(255, 51, 51, 0.08);
+            border: 1px solid rgba(255, 51, 51, 0.3);
+        }
+
+        body[data-view="vibrant"] .skill-item {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(168, 85, 247, 0.08));
+            border: 1px solid rgba(236, 72, 153, 0.2);
+        }
+
+        body[data-view="luxury"] .skill-item {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .skill-item h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        body[data-view="cutter"] .skill-item h3 { 
+            font-family: 'Courier Prime', monospace; 
+            color: #3d3d3d; 
+        }
+
+        body[data-view="power"] .skill-item h3 { 
+            font-family: -apple-system, sans-serif; 
+            color: #ff6666; 
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        body[data-view="vibrant"] .skill-item h3 { 
+            font-family: -apple-system, sans-serif; 
+            color: #ec4899; 
+            font-weight: 600;
+        }
+
+        body[data-view="luxury"] .skill-item h3 { 
+            font-family: 'Cormorant Garamond', serif; 
+            color: #d4af37; 
+            font-weight: 400;
+        }
+
+        .skill-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        body[data-view="cutter"] .skill-item p { 
+            font-family: 'Kalam', cursive; 
+            color: #5a5a5a; 
+        }
+
+        body[data-view="power"] .skill-item p { 
+            font-family: -apple-system, sans-serif; 
+            color: #ccc; 
+        }
+
+        body[data-view="vibrant"] .skill-item p { 
+            font-family: -apple-system, sans-serif; 
+            color: #d1c4e9; 
+        }
+
+        body[data-view="luxury"] .skill-item p { 
+            font-family: 'Cormorant Garamond', serif; 
+            color: #888; 
+        }
+
+        .interactive-demo {
+            margin: 3rem 0;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        body[data-view="cutter"] .interactive-demo {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        body[data-view="power"] .interactive-demo {
+            background: rgba(255, 51, 51, 0.05);
+        }
+
+        body[data-view="vibrant"] .interactive-demo {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(168, 85, 247, 0.05));
+        }
+
+        body[data-view="luxury"] .interactive-demo {
+            background: rgba(212, 175, 55, 0.03);
+        }
+
+        .theme-preview {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .theme-preview:hover {
+            transform: scale(1.2);
+        }
+
+        .theme-preview.cutter { background: #f5f1e8; border-color: #3d3d3d; }
+        .theme-preview.power { background: linear-gradient(135deg, #ff3333, #cc0000); }
+        .theme-preview.vibrant { background: linear-gradient(135deg, #ec4899, #a855f7, #fbbf24); }
+        .theme-preview.luxury { background: #0a0a0a; border-color: #d4af37; }
+    </style>
 </head>
 <body data-view="cutter">
     <nav>
@@ -25,123 +215,51 @@
         </div>
     </nav>
 
-    <main class="page-content">
-        <div id="aboutContent"></div>
+    <main>
+        <div class="about-hero">
+            <div class="code-block">
+                <div class="code-line">// Every site, built from scratch</div>
+                <div class="code-line">const website = {</div>
+                <div class="code-line">  templates: false,</div>
+                <div class="code-line">  custom: true,</div>
+                <div class="code-line">};</div>
+            </div>
+
+            <div class="skill-grid">
+                <div class="skill-item">
+                    <h3>HTML/CSS/JS</h3>
+                    <p>Hand-coded, no frameworks unless they're actually needed</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Responsive</h3>
+                    <p>Works on every device, every screen size</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Fast</h3>
+                    <p>Optimized, no bloat, loads instantly</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Yours</h3>
+                    <p>You get the code, full ownership</p>
+                </div>
+            </div>
+
+            <div class="interactive-demo">
+                <h3 style="margin-bottom: 1.5rem;">Try switching themes</h3>
+                <div class="theme-preview cutter" onclick="switchTheme('cutter')"></div>
+                <div class="theme-preview power" onclick="switchTheme('power')"></div>
+                <div class="theme-preview vibrant" onclick="switchTheme('vibrant')"></div>
+                <div class="theme-preview luxury" onclick="switchTheme('luxury')"></div>
+            </div>
+        </div>
     </main>
-
-    <template id="cutter-template">
-        <div class="about-content">
-            <section class="about-section">
-                <h2>I build websites from scratch</h2>
-                <p>Every single one. No Squarespace, no Wix, no WordPress themes. Just code.</p>
-                <p>Why? Because templates force you into boxes that weren't made for you. Your business isn't generic, so why should your site be?</p>
-            </section>
-
-            <section class="about-section">
-                <h2>How it actually works</h2>
-                <p>We talk. You tell me what you're building and who it's for. I design something that fits, then code it by hand.</p>
-                <p>You get the source files, full control, no recurring fees to some platform. It's yours.</p>
-            </section>
-
-            <section class="about-section">
-                <h2>Who this is for</h2>
-                <p>People who are serious about their work. Small businesses, artists, anyone building something real who needs a site that doesn't look mass-produced.</p>
-                <p>If you're ready to do this right, <a href="contact.html">let's talk</a>.</p>
-            </section>
-        </div>
-    </template>
-
-    <template id="power-template">
-        <div class="about-content">
-            <section class="about-section">
-                <h2>NO TEMPLATES</h2>
-                <p>Everything gets built from zero. Raw code. No drag-and-drop bullshit, no "premium themes."</p>
-                <p>You want something that hits different? That's what custom means. Built for your exact needs, not whoever else bought the same template.</p>
-            </section>
-
-            <section class="about-section">
-                <h2>THE PROCESS</h2>
-                <p>You tell me what needs to happen. I build it. No fluff, no upsells, no maintenance packages you don't need.</p>
-                <p>You get the code. You own it. Done.</p>
-            </section>
-
-            <section class="about-section">
-                <h2>WHO I WORK WITH</h2>
-                <p>People who execute. Builders, founders, creatives who know their work deserves better than off-the-shelf.</p>
-                <p><a href="contact.html">Get in touch</a> if you're ready to move.</p>
-            </section>
-        </div>
-    </template>
-
-    <template id="vibrant-template">
-        <div class="about-content">
-            <section class="about-section">
-                <h2>Every site is custom</h2>
-                <p>Like, actually custom. Not "choose from 50 templates" custom. Hand-coded, designed specifically for you kind of custom.</p>
-                <p>Because your brand has personality and templates don't. Simple as that.</p>
-            </section>
-
-            <section class="about-section">
-                <h2>The experience</h2>
-                <p>We collaborate. You bring the vision, I bring the technical execution. Back and forth until it's exactly right.</p>
-                <p>No compromising because "the theme doesn't support that." If you can imagine it, I can build it.</p>
-            </section>
-
-            <section class="about-section">
-                <h2>Let's make something unforgettable</h2>
-                <p>I work with bold brands and creative people who refuse to blend in. If that's you, <a href="contact.html">reach out</a>.</p>
-            </section>
-        </div>
-    </template>
-
-    <template id="luxury-template">
-        <div class="about-content">
-            <section class="about-section">
-                <h2>Bespoke development</h2>
-                <p>Each project begins with a blank canvas. No templates. No shortcuts. Pure craftsmanship.</p>
-                <p>Your brand deserves architecture designed specifically for your vision, not adapted from someone else's.</p>
-            </section>
-
-            <section class="about-section">
-                <h2>The craft</h2>
-                <p>Consultation. Design. Development. Refinement. Every detail considered, every line of code intentional.</p>
-                <p>You receive complete ownership of the work—the source code, the design files, everything.</p>
-            </section>
-
-            <section class="about-section">
-                <h2>For the discerning</h2>
-                <p>I work with those who understand the value of exceptional work. If you refuse to compromise on quality, <a href="contact.html">let's discuss your project</a>.</p>
-            </section>
-        </div>
-    </template>
 
     <script src="theme-switcher.js"></script>
     <script>
-        // Load the appropriate template based on current theme
-        document.addEventListener('DOMContentLoaded', function() {
-            function loadAboutContent() {
-                const view = document.body.getAttribute('data-view');
-                const template = document.getElementById(view + '-template');
-                const content = document.getElementById('aboutContent');
-                
-                if (template && content) {
-                    content.innerHTML = template.innerHTML;
-                }
-            }
-            
-            loadAboutContent();
-            
-            // Listen for theme changes
-            const observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if (mutation.attributeName === 'data-view') {
-                        loadAboutContent();
-                    }
-                });
-            });
-            
-            observer.observe(document.body, { attributes: true });
-        });
+        function switchTheme(theme) {
+            document.body.setAttribute('data-view', theme);
+            localStorage.setItem('selectedView', theme);
+        }
     </script>
 </body>
 </html>
