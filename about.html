@@ -26,26 +26,122 @@
     </nav>
 
     <main class="page-content">
-        <div class="about-content">
-            <section class="about-section">
-                <h2>Here's the deal</h2>
-                <p>I don't touch templates. Every site I build starts with a blank file and ends with something that's actually yours.</p>
-                <p>You tell me what you're trying to do, who you're talking to, what matters. I build it. No bullshit filler pages, no features you'll never use, no "recommended plugins."</p>
-            </section>
-
-            <section class="about-section">
-                <h2>The work takes 2-4 weeks</h2>
-                <p>Design, build, revisions, done. You get the code, the files, everything. It's yours.</p>
-                <p>I work with people who know templates aren't going to cut it. Small businesses, artists, anyone building something real who needs their site to match.</p>
-            </section>
-
-            <section class="about-section">
-                <h2>Booking 2026</h2>
-                <p>Taking a limited number of projects. <a href="contact.html">Reach out</a> if you're interested.</p>
-            </section>
-        </div>
+        <div id="aboutContent"></div>
     </main>
 
+    <template id="cutter-template">
+        <div class="about-content">
+            <section class="about-section">
+                <h2>I build websites from scratch</h2>
+                <p>Every single one. No Squarespace, no Wix, no WordPress themes. Just code.</p>
+                <p>Why? Because templates force you into boxes that weren't made for you. Your business isn't generic, so why should your site be?</p>
+            </section>
+
+            <section class="about-section">
+                <h2>How it actually works</h2>
+                <p>We talk. You tell me what you're building and who it's for. I design something that fits, then code it by hand.</p>
+                <p>You get the source files, full control, no recurring fees to some platform. It's yours.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>Who this is for</h2>
+                <p>People who are serious about their work. Small businesses, artists, anyone building something real who needs a site that doesn't look mass-produced.</p>
+                <p>If you're ready to do this right, <a href="contact.html">let's talk</a>.</p>
+            </section>
+        </div>
+    </template>
+
+    <template id="power-template">
+        <div class="about-content">
+            <section class="about-section">
+                <h2>NO TEMPLATES</h2>
+                <p>Everything gets built from zero. Raw code. No drag-and-drop bullshit, no "premium themes."</p>
+                <p>You want something that hits different? That's what custom means. Built for your exact needs, not whoever else bought the same template.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>THE PROCESS</h2>
+                <p>You tell me what needs to happen. I build it. No fluff, no upsells, no maintenance packages you don't need.</p>
+                <p>You get the code. You own it. Done.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>WHO I WORK WITH</h2>
+                <p>People who execute. Builders, founders, creatives who know their work deserves better than off-the-shelf.</p>
+                <p><a href="contact.html">Get in touch</a> if you're ready to move.</p>
+            </section>
+        </div>
+    </template>
+
+    <template id="vibrant-template">
+        <div class="about-content">
+            <section class="about-section">
+                <h2>Every site is custom</h2>
+                <p>Like, actually custom. Not "choose from 50 templates" custom. Hand-coded, designed specifically for you kind of custom.</p>
+                <p>Because your brand has personality and templates don't. Simple as that.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>The experience</h2>
+                <p>We collaborate. You bring the vision, I bring the technical execution. Back and forth until it's exactly right.</p>
+                <p>No compromising because "the theme doesn't support that." If you can imagine it, I can build it.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>Let's make something unforgettable</h2>
+                <p>I work with bold brands and creative people who refuse to blend in. If that's you, <a href="contact.html">reach out</a>.</p>
+            </section>
+        </div>
+    </template>
+
+    <template id="luxury-template">
+        <div class="about-content">
+            <section class="about-section">
+                <h2>Bespoke development</h2>
+                <p>Each project begins with a blank canvas. No templates. No shortcuts. Pure craftsmanship.</p>
+                <p>Your brand deserves architecture designed specifically for your vision, not adapted from someone else's.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>The craft</h2>
+                <p>Consultation. Design. Development. Refinement. Every detail considered, every line of code intentional.</p>
+                <p>You receive complete ownership of the work—the source code, the design files, everything.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>For the discerning</h2>
+                <p>I work with those who understand the value of exceptional work. If you refuse to compromise on quality, <a href="contact.html">let's discuss your project</a>.</p>
+            </section>
+        </div>
+    </template>
+
     <script src="theme-switcher.js"></script>
+    <script>
+        // Load the appropriate template based on current theme
+        document.addEventListener('DOMContentLoaded', function() {
+            function loadAboutContent() {
+                const view = document.body.getAttribute('data-view');
+                const template = document.getElementById(view + '-template');
+                const content = document.getElementById('aboutContent');
+                
+                if (template && content) {
+                    content.innerHTML = template.innerHTML;
+                }
+            }
+            
+            loadAboutContent();
+            
+            // Listen for theme changes
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === 'data-view') {
+                        loadAboutContent();
+                    }
+                });
+            });
+            
+            observer.observe(document.body, { attributes: true });
+        });
+    </script>
 </body>
 </html>
