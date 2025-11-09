@@ -55,6 +55,7 @@ body[data-view="luxury"] .views-menu button { color: #999; font-family: 'Cormora
 body[data-view="luxury"] .views-menu button:hover { background: #d4af37; color: #0a0a0a; }
 
 main { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 3rem; transition: all 0.6s ease; }
+main.page-content { display: block; align-items: unset; justify-content: unset; }
 
 /* Page Content */
 .page-content { max-width: 1000px; margin: 0 auto; padding-top: 8rem; }
