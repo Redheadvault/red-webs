@@ -6,251 +6,259 @@
     <title>About — rh-redwebs</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .about-hero {
-            max-width: 900px;
-            margin: 0 auto;
+        /* CUTTER - Split screen with code on left */
+        .cutter-about {
+            display: grid;
+            grid-template-columns: 45% 55%;
+            min-height: 100vh;
+            padding-top: 80px;
         }
 
-        .code-block {
-            font-family: 'Courier New', monospace;
+        .cutter-code-panel {
+            background: #1e1e1e;
+            padding: 3rem 2rem;
+            position: sticky;
+            top: 80px;
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+
+        .cutter-code-panel pre {
+            font-family: 'Courier Prime', monospace;
+            color: #4ec9b0;
             font-size: 0.9rem;
             line-height: 1.6;
-            padding: 2rem;
-            border-radius: 8px;
-            margin: 3rem 0;
         }
 
-        body[data-view="cutter"] .code-block {
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+        .cutter-code-panel .comment {
+            color: #6a9955;
+        }
+
+        .cutter-code-panel .string {
+            color: #ce9178;
+        }
+
+        .cutter-content-panel {
+            padding: 3rem 2rem 3rem 3rem;
+        }
+
+        .cutter-block {
+            margin-bottom: 4rem;
+            max-width: 500px;
+        }
+
+        .cutter-block h3 {
+            font-family: 'Courier Prime', monospace;
             color: #3d3d3d;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid #3d3d3d;
+            padding-left: 1rem;
         }
 
-        body[data-view="power"] .code-block {
-            background: rgba(255, 51, 51, 0.05);
-            border: 1px solid rgba(255, 51, 51, 0.3);
-            color: #ff6666;
+        .cutter-block p {
+            font-family: 'Kalam', cursive;
+            color: #5a5a5a;
+            line-height: 1.8;
+            font-size: 1.05rem;
         }
 
-        body[data-view="vibrant"] .code-block {
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(168, 85, 247, 0.05));
-            border: 1px solid rgba(236, 72, 153, 0.3);
-            color: #ec4899;
-        }
-
-        body[data-view="luxury"] .code-block {
-            background: rgba(212, 175, 55, 0.03);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            color: #d4af37;
-        }
-
-        .skill-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 3rem 0;
-        }
-
-        .skill-item {
-            padding: 1.5rem;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-5px);
-        }
-
-        body[data-view="cutter"] .skill-item {
-            background: rgba(0, 0, 0, 0.02);
-            border: 1px dashed rgba(0, 0, 0, 0.1);
-        }
-
-        body[data-view="power"] .skill-item {
-            background: rgba(255, 51, 51, 0.08);
-            border: 1px solid rgba(255, 51, 51, 0.3);
-        }
-
-        body[data-view="vibrant"] .skill-item {
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(168, 85, 247, 0.08));
-            border: 1px solid rgba(236, 72, 153, 0.2);
-        }
-
-        body[data-view="luxury"] .skill-item {
-            background: rgba(212, 175, 55, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        .skill-item h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        body[data-view="cutter"] .skill-item h3 { 
-            font-family: 'Courier Prime', monospace; 
-            color: #3d3d3d; 
-        }
-
-        body[data-view="power"] .skill-item h3 { 
-            font-family: -apple-system, sans-serif; 
-            color: #ff6666; 
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        body[data-view="vibrant"] .skill-item h3 { 
-            font-family: -apple-system, sans-serif; 
-            color: #ec4899; 
-            font-weight: 600;
-        }
-
-        body[data-view="luxury"] .skill-item h3 { 
-            font-family: 'Cormorant Garamond', serif; 
-            color: #d4af37; 
-            font-weight: 400;
-        }
-
-        .skill-item p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        body[data-view="cutter"] .skill-item p { 
-            font-family: 'Kalam', cursive; 
-            color: #5a5a5a; 
-        }
-
-        body[data-view="power"] .skill-item p { 
-            font-family: -apple-system, sans-serif; 
-            color: #ccc; 
-        }
-
-        body[data-view="vibrant"] .skill-item p { 
-            font-family: -apple-system, sans-serif; 
-            color: #d1c4e9; 
-        }
-
-        body[data-view="luxury"] .skill-item p { 
-            font-family: 'Cormorant Garamond', serif; 
-            color: #888; 
-        }
-
-        .stats-row {
-            display: flex;
-            justify-content: space-around;
-            margin: 3rem 0;
-            text-align: center;
-        }
-
-        .stat-item {
-            flex: 1;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        body[data-view="cutter"] .stat-number { 
-            font-family: 'Courier Prime', monospace; 
-            color: #3d3d3d; 
-        }
-
-        body[data-view="power"] .stat-number { 
-            font-family: -apple-system, sans-serif; 
-            color: #ff3333; 
-        }
-
-        body[data-view="vibrant"] .stat-number { 
-            background: linear-gradient(135deg, #ec4899, #a855f7);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        body[data-view="luxury"] .stat-number { 
-            font-family: 'Cormorant Garamond', serif; 
-            color: #d4af37; 
-        }
-
-        .process-timeline {
-            margin: 3rem 0;
+        /* POWER - Diagonal full-screen sections */
+        .power-about {
             position: relative;
         }
 
-        .timeline-item {
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 3px solid;
-            padding-left: 2rem;
+        .power-diagonal {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: -15vh;
         }
 
-        body[data-view="cutter"] .timeline-item {
-            border-color: #3d3d3d;
+        .power-diagonal:last-child {
+            clip-path: none;
+            margin-bottom: 0;
         }
 
-        body[data-view="power"] .timeline-item {
-            border-color: #ff3333;
+        .power-diagonal:nth-child(1) {
+            background: linear-gradient(135deg, #1a0000, #2d0000);
         }
 
-        body[data-view="vibrant"] .timeline-item {
-            border-color: #ec4899;
+        .power-diagonal:nth-child(2) {
+            background: linear-gradient(135deg, #330000, #1a0000);
         }
 
-        body[data-view="luxury"] .timeline-item {
-            border-color: #d4af37;
+        .power-diagonal:nth-child(3) {
+            background: linear-gradient(135deg, #1a0000, #330000);
         }
 
-        .timeline-item h3 {
+        .power-text {
+            max-width: 1000px;
+            padding: 0 2rem;
+            text-align: left;
+        }
+
+        .power-text h2 {
+            font-family: -apple-system, sans-serif;
+            color: #ff3333;
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 900;
+            line-height: 0.85;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            transform: skew(-5deg);
+        }
+
+        .power-text p {
+            font-family: -apple-system, sans-serif;
+            color: #bbb;
+            font-size: 1.4rem;
+            line-height: 1.5;
+            max-width: 700px;
+        }
+
+        /* VIBRANT - Scattered masonry cards */
+        .vibrant-about {
+            padding: 6rem 2rem 4rem;
+            columns: 3;
+            column-gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .vibrant-card {
+            break-inside: avoid;
+            margin-bottom: 2rem;
+            padding: 2.5rem;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(168, 85, 247, 0.15));
+            border: 2px solid rgba(236, 72, 153, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .vibrant-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(236, 72, 153, 0.3);
+        }
+
+        .vibrant-card.large {
+            font-size: 1.2rem;
+        }
+
+        .vibrant-card h3 {
+            font-family: -apple-system, sans-serif;
+            color: #ec4899;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .vibrant-card p {
+            font-family: -apple-system, sans-serif;
+            color: #d1c4e9;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .vibrant-intro {
+            column-span: all;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .vibrant-intro h1 {
+            font-family: -apple-system, sans-serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 300;
+            background: linear-gradient(135deg, #ec4899, #a855f7, #fbbf24);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
         }
 
-        body[data-view="cutter"] .timeline-item h3 {
-            font-family: 'Courier Prime', monospace;
-            color: #3d3d3d;
+        @media (max-width: 900px) {
+            .vibrant-about {
+                columns: 2;
+            }
         }
 
-        body[data-view="power"] .timeline-item h3 {
-            font-family: -apple-system, sans-serif;
-            color: #ff6666;
-            font-weight: 700;
-            text-transform: uppercase;
+        @media (max-width: 600px) {
+            .vibrant-about {
+                columns: 1;
+            }
         }
 
-        body[data-view="vibrant"] .timeline-item h3 {
-            font-family: -apple-system, sans-serif;
-            color: #ec4899;
-            font-weight: 600;
+        /* LUXURY - Vertical scroll with reveals */
+        .luxury-about {
+            padding-top: 15vh;
         }
 
-        body[data-view="luxury"] .timeline-item h3 {
+        .luxury-panel {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .luxury-panel::before {
+            content: attr(data-number);
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 8rem;
+            color: rgba(212, 175, 55, 0.05);
+            font-weight: 300;
+        }
+
+        .luxury-content {
+            max-width: 650px;
+        }
+
+        .luxury-content h2 {
             font-family: 'Cormorant Garamond', serif;
             color: #d4af37;
+            font-size: 3.5rem;
+            font-weight: 300;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.1em;
         }
 
-        .timeline-item p {
-            font-size: 0.95rem;
-        }
-
-        body[data-view="cutter"] .timeline-item p {
-            font-family: 'Kalam', cursive;
-            color: #5a5a5a;
-        }
-
-        body[data-view="power"] .timeline-item p {
-            font-family: -apple-system, sans-serif;
-            color: #ccc;
-        }
-
-        body[data-view="vibrant"] .timeline-item p {
-            font-family: -apple-system, sans-serif;
-            color: #d1c4e9;
-        }
-
-        body[data-view="luxury"] .timeline-item p {
+        .luxury-content p {
             font-family: 'Cormorant Garamond', serif;
-            color: #888;
+            color: #999;
+            font-size: 1.2rem;
+            line-height: 2.2;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .luxury-divider {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 3rem auto;
+            opacity: 0.3;
+        }
+
+        @media (max-width: 768px) {
+            .cutter-about {
+                grid-template-columns: 1fr;
+            }
+            .cutter-code-panel {
+                position: relative;
+                height: auto;
+                top: 0;
+            }
         }
     </style>
 </head>
@@ -273,198 +281,169 @@
         </div>
     </nav>
 
-    <main>
-        <div id="aboutContent"></div>
-    </main>
+    <main id="aboutContent"></main>
 
     <template id="cutter-template">
-        <div class="about-hero">
-            <div class="code-block">
-                <div>// Every site, hand-coded</div>
-                <div>const approach = {</div>
-                <div>  templates: false,</div>
-                <div>  frameworks: "only if needed",</div>
-                <div>  custom: true</div>
-                <div>};</div>
+        <div class="cutter-about">
+            <div class="cutter-code-panel">
+                <pre><span class="comment">// function buildWebsite()</span>
+
+const approach = {
+  templates: <span class="string">"none"</span>,
+  platform: <span class="string">"raw code"</span>,
+  ownership: <span class="string">"full"</span>,
+  fees: <span class="string">"zero"</span>
+};
+
+<span class="comment">// Every project</span>
+function init() {
+  listen(client.needs);
+  sketch(ideas);
+  build(from_scratch);
+  deliver(source_files);
+}
+
+<span class="comment">// What you get</span>
+return {
+  website: custom,
+  code: yours,
+  design: original
+};
+
+<span class="comment">// No templates</span>
+<span class="comment">// No shortcuts</span>
+<span class="comment">// Just code</span></pre>
             </div>
 
-            <div class="skill-grid">
-                <div class="skill-item">
-                    <h3>Clean code</h3>
-                    <p>Readable, maintainable, yours to modify</p>
+            <div class="cutter-content-panel">
+                <div class="cutter-block">
+                    <h3>starts blank</h3>
+                    <p>Every project starts with an empty file. No template, no theme—just me and the code.</p>
+                    <p>Your site gets built for you, not adapted from something made for someone else.</p>
                 </div>
-                <div class="skill-item">
-                    <h3>No bloat</h3>
-                    <p>Just what's needed, nothing extra</p>
-                </div>
-                <div class="skill-item">
-                    <h3>Fast load</h3>
-                    <p>Optimized from the start</p>
-                </div>
-                <div class="skill-item">
-                    <h3>Full ownership</h3>
-                    <p>Source files included</p>
-                </div>
-            </div>
 
-            <div class="process-timeline">
-                <div class="timeline-item">
-                    <h3>01. Talk</h3>
-                    <p>We discuss what you need and who it's for</p>
+                <div class="cutter-block">
+                    <h3>built clean</h3>
+                    <p>I write the HTML, CSS, and JavaScript myself. No bloated frameworks, no unnecessary dependencies.</p>
+                    <p>Fast, lightweight, and exactly what you need.</p>
                 </div>
-                <div class="timeline-item">
-                    <h3>02. Design</h3>
-                    <p>I sketch ideas, you give feedback</p>
+
+                <div class="cutter-block">
+                    <h3>stays yours</h3>
+                    <p>You get the source code. All of it. Host it wherever you want, modify it whenever you want.</p>
+                    <p>No platform fees, no vendor lock-in.</p>
                 </div>
-                <div class="timeline-item">
-                    <h3>03. Build</h3>
-                    <p>I code it from scratch</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>04. Refine</h3>
-                    <p>We tweak until it's right</p>
+
+                <div class="cutter-block">
+                    <h3>who it's for</h3>
+                    <p>People building something real. Small businesses that care about quality. Anyone who knows their work deserves better than a template.</p>
+                    <p><a href="contact.html" style="color: #3d3d3d; text-decoration: underline;">Let's build something</a>.</p>
                 </div>
             </div>
         </div>
     </template>
 
     <template id="power-template">
-        <div class="about-hero">
-            <div class="stats-row">
-                <div class="stat-item">
-                    <div class="stat-number">0</div>
-                    <p>TEMPLATES USED</p>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <p>CUSTOM CODE</p>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">∞</div>
-                    <p>POSSIBILITIES</p>
+        <div class="power-about">
+            <div class="power-diagonal">
+                <div class="power-text">
+                    <h2>NO<br>TEMPLATES</h2>
+                    <p>Every line of code written from scratch. Zero themes. Zero shortcuts. Pure execution.</p>
                 </div>
             </div>
 
-            <div class="code-block">
-                <div>// NO COMPROMISES</div>
-                <div>if (template) { reject(); }</div>
-                <div>if (custom) { build(); }</div>
+            <div class="power-diagonal">
+                <div class="power-text">
+                    <h2>YOUR<br>CONTROL</h2>
+                    <p>You get the source code. Host anywhere. Modify anything. No platform dependencies. Complete ownership.</p>
+                </div>
             </div>
 
-            <div class="skill-grid">
-                <div class="skill-item">
-                    <h3>RAW CODE</h3>
-                    <p>Built from zero, optimized for speed</p>
-                </div>
-                <div class="skill-item">
-                    <h3>YOUR VISION</h3>
-                    <p>Exactly what you need, nothing less</p>
-                </div>
-                <div class="skill-item">
-                    <h3>FULL CONTROL</h3>
-                    <p>You own every line of code</p>
-                </div>
-                <div class="skill-item">
-                    <h3>ZERO FLUFF</h3>
-                    <p>No upsells, no monthly fees</p>
+            <div class="power-diagonal">
+                <div class="power-text">
+                    <h2>MOVE<br>FAST</h2>
+                    <p>Clean code means fast sites. No bloated frameworks. No unnecessary weight. Just speed.</p>
+                    <p><a href="contact.html" style="color: #ff6666; text-decoration: underline; font-weight: 700;">Start building</a>.</p>
                 </div>
             </div>
         </div>
     </template>
 
     <template id="vibrant-template">
-        <div class="about-hero">
-            <div class="skill-grid">
-                <div class="skill-item">
-                    <h3>✨ Creative freedom</h3>
-                    <p>If you can imagine it, I can build it</p>
-                </div>
-                <div class="skill-item">
-                    <h3>🎨 Custom design</h3>
-                    <p>Designed specifically for your brand</p>
-                </div>
-                <div class="skill-item">
-                    <h3>⚡ Fast & smooth</h3>
-                    <p>Optimized animations and interactions</p>
-                </div>
-                <div class="skill-item">
-                    <h3>💎 Unforgettable</h3>
-                    <p>Sites that people remember</p>
-                </div>
+        <div class="vibrant-about">
+            <div class="vibrant-intro">
+                <h1>Custom built, totally yours</h1>
             </div>
 
-            <div class="code-block">
-                <div>/* Your brand deserves more than a template */</div>
-                <div>let website = createCustom({</div>
-                <div>  personality: true,</div>
-                <div>  memorable: true,</div>
-                <div>  generic: false</div>
-                <div>});</div>
+            <div class="vibrant-card large">
+                <h3>✨ Zero templates</h3>
+                <p>Every website starts from scratch. Your vision, coded fresh. No theme limitations, no "sorry that's not possible."</p>
             </div>
 
-            <div class="process-timeline">
-                <div class="timeline-item">
-                    <h3>Discover</h3>
-                    <p>We explore your vision and brand personality together</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>Create</h3>
-                    <p>I design concepts that capture your unique energy</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>Bring to life</h3>
-                    <p>Custom code that makes your site truly interactive</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>Polish</h3>
-                    <p>Every detail refined until it's perfect</p>
-                </div>
+            <div class="vibrant-card">
+                <h3>🎨 Your style</h3>
+                <p>Built to match your brand's exact vibe and personality.</p>
+            </div>
+
+            <div class="vibrant-card">
+                <h3>⚡ Lightning fast</h3>
+                <p>Clean code = fast loading. No bloated frameworks slowing you down.</p>
+            </div>
+
+            <div class="vibrant-card large">
+                <h3>🚀 You own everything</h3>
+                <p>Source code, design files, all yours. Host anywhere, modify anytime, zero recurring fees.</p>
+            </div>
+
+            <div class="vibrant-card">
+                <h3>💎 Actually memorable</h3>
+                <p>Sites people notice and remember because they're built to stand out.</p>
+            </div>
+
+            <div class="vibrant-card">
+                <h3>🎯 Built for you</h3>
+                <p>Designed for your specific audience and goals, not generic visitors.</p>
+            </div>
+
+            <div class="vibrant-card large">
+                <h3>💜 Let's create something</h3>
+                <p>Ready to build a website that's actually yours? <a href="contact.html" style="color: #ec4899; font-weight: 600;">Get started</a>.</p>
             </div>
         </div>
     </template>
 
     <template id="luxury-template">
-        <div class="about-hero">
-            <div class="stats-row">
-                <div class="stat-item">
-                    <div class="stat-number">I</div>
-                    <p>Artisan developer</p>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">∞</div>
-                    <p>Attention to detail</p>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <p>Bespoke craft</p>
+        <div class="luxury-about">
+            <div class="luxury-panel" data-number="I">
+                <div class="luxury-content">
+                    <h2>Bespoke architecture</h2>
+                    <p>Each website begins with a blank canvas. No templates. No themes.</p>
+                    <p>Pure custom code, crafted specifically for your vision.</p>
                 </div>
             </div>
 
-            <div class="code-block">
-                <div>// Precision in every line</div>
-                <div>const craft = {</div>
-                <div>  materials: "Pure code",</div>
-                <div>  approach: "Meticulous",</div>
-                <div>  result: "Exceptional"</div>
-                <div>};</div>
+            <div class="luxury-panel" data-number="II">
+                <div class="luxury-content">
+                    <h2>Uncompromising quality</h2>
+                    <p>Every detail considered. Every line refined.</p>
+                    <p>Built to the highest standards of craftsmanship.</p>
+                </div>
             </div>
 
-            <div class="process-timeline">
-                <div class="timeline-item">
-                    <h3>Consultation</h3>
-                    <p>Understanding your vision and requirements in depth</p>
+            <div class="luxury-panel" data-number="III">
+                <div class="luxury-content">
+                    <h2>Complete sovereignty</h2>
+                    <p>You receive all source code and design files.</p>
+                    <p>Full ownership. No dependencies. Absolute control.</p>
                 </div>
-                <div class="timeline-item">
-                    <h3>Architecture</h3>
-                    <p>Designing the structure with careful consideration</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>Execution</h3>
-                    <p>Hand-crafting each element with precision</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>Refinement</h3>
-                    <p>Perfecting every detail to exacting standards</p>
+            </div>
+
+            <div class="luxury-panel" data-number="IV">
+                <div class="luxury-content">
+                    <h2>For the discerning</h2>
+                    <p>I work exclusively with those who value exceptional work.</p>
+                    <div class="luxury-divider"></div>
+                    <p><a href="contact.html" style="color: #d4af37; text-decoration: none; border-bottom: 1px solid #d4af37;">Begin consultation</a></p>
                 </div>
             </div>
         </div>
